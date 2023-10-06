@@ -13,7 +13,16 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+html{
+  scroll-behavior: smooth;
+}
 
 body {
 
+}
+.link.active{
+  color: #fff;
+}
+section{
+  /* height: 100vh; */
 }
