@@ -2,11 +2,12 @@
 'use client'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { signOut, useSession } from 'next-auth/react';
 
 
 const Header = () => {
   const pathname = usePathname();
-
+  const {data,status} = useSession();
   return (
   <div>
 
@@ -22,8 +23,17 @@ const Header = () => {
           </Link>
         <Link className={`link ${pathname === '/blog' ? 'active' : ''}`} href="/blog" scroll={false}>blog</Link>
         <Link className={`link ${pathname === '/contact' ? 'active' : ''}`} href="/contact">contact</Link>
+
+
         <Link className={`link ${pathname === '/write' ? 'active' : ''}`} href="/write">write</Link>
-        <Link className={`link ${pathname === '/login' ? 'active' : ''}`} href="/login">login</Link>
+{
+  status == "authenticated" ? <>
+  <Link className={`link ${pathname === '/account' ? 'active' : ''}`} href="/account">{data?.user.name}</Link>
+  <button onClick={()=>signOut()}>logout</button>
+  </>:<>
+  <Link className={`link ${pathname === '/login' ? 'active' : ''}`} href="/login">login</Link>
+  </>
+}
     </div>
 
   </div>
