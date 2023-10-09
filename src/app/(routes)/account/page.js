@@ -3,16 +3,18 @@
 // import React, { useMemo } from 'react'
 import { useSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
-const Account = ({setAccountState}) => {
+import { useEffect } from 'react';
+const Account = () => {
     const session = useSession();
     const router = useRouter();
-    if (session.status === "unauthenticated") {
-      router?.push("/login");
-   }
+    
+        if (session.status === "unauthenticated") {
+          router?.push("/");
+       }
+    // useEffect(() => {
+    // }, [])
+    
 
-//    useMemo(() => {
-//     setAccountState(false);
-//   }, [setAccountState]);
   return (
     <div>Account
 

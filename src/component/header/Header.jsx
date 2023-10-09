@@ -28,7 +28,8 @@ const Header = () => {
         <Link className={`link ${pathname === '/write' ? 'active' : ''}`} href="/write">write</Link>
 {
   status == "authenticated" ? <>
-  <Link className={`link ${pathname === '/account' ? 'active' : ''}`} href="/account">{data?.user.name}</Link>
+  <Link className={`link ${pathname === '/account' ? 'active' : ''}`} href="/account">{data?.user?.name}</Link>
+  <span> <img src={data?.user?.image} height="25" width="25" alt="user img" /> </span>
   <button onClick={()=>signOut()}>logout</button>
   </>:<>
   <Link className={`link ${pathname === '/login' ? 'active' : ''}`} href="/login">login</Link>
